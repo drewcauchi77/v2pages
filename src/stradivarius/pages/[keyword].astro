@@ -1,0 +1,30 @@
+---
+import Layout from "../../_global/layouts/Layout.astro";
+import Header from "../components/Header.vue";
+
+export function getStaticPaths() {
+  return [{ params: { keyword: "pantalones" } }];
+}
+
+const { keyword } = Astro.params;
+
+const subtitleText = "This is an Astro -> Vue subtitle text";
+---
+
+<Layout gtmId="GTM-1234-ID">
+  <div class="header-container">
+    <Header
+      client:visible
+      title="Wonderful Vue props"
+      subtitle={subtitleText}
+    />
+
+    <div>Good dog, {keyword}!</div>
+  </div>
+</Layout>
+
+<style>
+  .header-container {
+    margin-top: 200vh;
+  }
+</style>
